@@ -42,3 +42,7 @@ install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/xhanalibConfigVersion.cmake
     DESTINATION lib/cmake/xhanalib
 )
+
+add_subdirectory(dependencies)
+add_subdirectory(tests)
+
