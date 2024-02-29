@@ -47,3 +47,7 @@ To run the tests:
 ```
 ## Library Usage Examples
 TODO
+
+# Project provided by:
+
+[Xhana Labs](https://www.xhanalabs.com) 
