@@ -45,6 +45,7 @@ SOFTWARE.
 #include <iomanip>
 #include <array>
 #include <cmath>
+#include <type_traits>
 
 /**
 * Determination a platform of an operation system
@@ -159,10 +160,11 @@ namespace xhanalib
     // Number of digits in a number.
     //
     // Usage:
-    //   auto a = xl::to_string(1);
+    //   auto number_of_digits_in_a_number = xl::count_digits(1234);
     template <typename T>
     static T count_digits(T number) 
     {
+        static_assert(std::is_arithmetic<T>::value, "count_digits is numeric types only");
         T count = 0;
         while(number != 0) {
             number = number / 10;
@@ -174,7 +176,7 @@ namespace xhanalib
     // Float or decimal comparison to n decimal places
     //
     // Usage:
-    //   if( TEST_CHECK( equalToNDecimalPlaces( c.circumference(), 94.2478f, 4) )) {
+    //   if( TEST_CHECK( equal_to_n_decimal_places( c.circumference(), 94.2478f, 4) )) {
     bool equal_to_n_decimal_places(float a, float b, int decimal_places) {
         float epsilon = std::pow(10, -decimal_places);
         return std::abs(a - b) < epsilon;
@@ -235,6 +237,7 @@ namespace xhanalib
     auto random_integer_from_range_x_to_y( T1 lower_boundary, 
         T1 upper_boundary ) -> T1
     {
+        static_assert(std::is_arithmetic<T1>::value, "random_integer_from_range_x_to_y is numeric types only");
         constexpr bool traceLoggingEnabled = false;
 
         // Seed the random number generator with a truly random value
@@ -260,6 +263,7 @@ namespace xhanalib
     auto random_real_from_range_x_to_y( T1 lower_boundary, 
         T1 upper_boundary) -> T1
 	{
+        static_assert(std::is_arithmetic<T1>::value, "random_real_from_range_x_to_y is numeric types only");
         constexpr bool traceLoggingEnabled = false;
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -277,6 +281,7 @@ namespace xhanalib
 	template <typename T1>
 	auto random_number_of_length_n( size_t length_of_number ) -> T1
 	{
+        static_assert(std::is_arithmetic<T1>::value, "random_number_of_length_n is numeric types only");
         constexpr bool traceLoggingEnabled = false;
 		T1 return_num = 0;
 
@@ -384,6 +389,7 @@ namespace xhanalib
     template <typename T1>
     auto number_as_binary(T1 num, bool shorten = true) -> const char *
     {
+        static_assert(std::is_arithmetic<T1>::value, "number_as_binary is numeric types only");
         static char buffer[sizeof(num) * 8 + 1]; // +1 for null terminator
         size_t size = sizeof(num) * 8; // Number of bits in type
 

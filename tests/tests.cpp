@@ -276,6 +276,21 @@ void test_keyval_2(void)
     TEST_CHECK_( strcmp(results_case_opts[4].value, "lower") > 0, "-> results_case_opts[1].value:[%s]", results_case_opts[4].value );
 }
 
+void test_equal_to_n_decimal_places_1(void)
+{
+    TEST_CHECK( xl::equal_to_n_decimal_places( 94.257f, 94.257f, 2) == true );
+}
+
+void test_equal_to_n_decimal_places_2(void)
+{
+    TEST_CHECK( xl::equal_to_n_decimal_places( 94.257343432f, 94.257f, 3) == true );
+}
+
+void test_equal_to_n_decimal_places_3(void)
+{
+    TEST_CHECK( xl::equal_to_n_decimal_places( 94.25f, 94.26f, 2) == false );
+}
+
 // https://github.com/mity/acutest/tree/master
 // cmake --build . && ctest -C Debug -V
 
@@ -312,5 +327,8 @@ TEST_LIST = {
     { "execute() 2", test_execute_2 },
     { "keyval usage 1", test_keyval_1 },
     { "keyval usage 2", test_keyval_2 },
+    { "equal_to_n_decimal_places() 1", test_equal_to_n_decimal_places_1 },
+    { "equal_to_n_decimal_places() 2", test_equal_to_n_decimal_places_2 },
+    { "equal_to_n_decimal_places() 3", test_equal_to_n_decimal_places_3 },
     { NULL, NULL }     /* zeroed record marking the end of the list */
 };
