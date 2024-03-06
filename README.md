@@ -46,7 +46,51 @@ To run the tests:
 ./tests/xhanalib_tests
 ```
 ## Library Usage Examples
-TODO
+```bash
+namespace xl = xhanalib;
+
+xl::log("The value is:", "1");
+xl::log_once("The values are:", "1", "2");  // Will only print once
+
+auto a = xl::get_platform_name();
+auto a = xl::to_string(1);
+auto a = xl::to_string("1");
+auto a = xl::to_string(1.2);
+
+auto key_val_str = "name=john&age=50";
+std::map<std::string, std::string> out_map{};
+auto w = xl::deserialize_key_value(key_val_str, '=', '&', out_map);
+
+out_map["name"] == "john"
+out_map["age"] == "50"
+
+auto test_length = 9;
+auto a = xl::random_number_of_length_n<int>(test_length);
+
+size_t test_length = 4;
+auto rnd_str = xl::random_string_of_length_n(test_length, "abcdefghijklmnop");
+
+auto a = xl::random_integer_from_range_x_to_y<int>(5, 9);
+
+auto a = xl::random_real_from_range_x_to_y<float>(3.2, 14.777);
+
+auto a = xl::get_current_timestamp();
+
+auto a = 2;
+auto b = xl::number_as_binary<int>(a);
+
+auto a = xl::execute("dir");
+
+struct xl::keyval results_case_opts[] = {
+   {0, "upper"},
+   {1, "lower"},
+   {2, "mixed"}
+};
+Usage:
+  results_case_opts[p_case].value
+
+if( xl::equal_to_n_decimal_places( 94.257343432f, 94.257f, 3) == true )
+```
 
 # Project provided by:
 
