@@ -381,7 +381,7 @@ namespace xhanalib
 #ifdef _WIN32
         localtime_s(&timeinfo, &current_time);
 #else
-        localtime_r(&current_time, &time_info);
+        localtime_r(&current_time, &timeinfo);
 #endif
 
         const auto current_time_since_epoch{ current_time_point.time_since_epoch() };
