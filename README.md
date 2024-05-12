@@ -1,6 +1,8 @@
 # xhanalib
 The Xhana Labs Library (xhanalib) is a C++ header only library providing a toolbox for fast prototyping, rudimentary fuzz testing and random data generation.
 
+When testing and prototyping there is often a need for random strings and numbers of a specified length. This libraries intent is to be a toolbox of items to facilitate that.
+
 ## Integrating xhanalib in to a project
 
 Xhanalib is header only. You can add the header file directly to your project.
