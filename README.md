@@ -92,6 +92,9 @@ Usage:
   results_case_opts[p_case].value
 
 if( xl::equal_to_n_decimal_places( 94.257343432f, 94.257f, 3) == true )
+
+// In testing sometimes you want to pause for enter and display current values 
+xl::pause_for_enter();
 ```
 
 # Project provided by:
