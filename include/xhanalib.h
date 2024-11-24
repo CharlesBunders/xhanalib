@@ -440,5 +440,11 @@ namespace xhanalib
 
         return result;
     }
+
+    // Cross platform pause for enter
+    auto pause_for_enter() -> void {
+        std::cout << "Press Enter to continue...";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
 }
 #endif
