@@ -43,12 +43,23 @@ cd build
 cmake ..
 cmake --build .
 ```
+
+If having issues with the tests:
+```bash
+mkdir build
+cd build
+cmake -DBUILD_TESTING=OFF .. 
+cmake --build .
+```
+
 To run the tests:
 ```bash
 ./tests/xhanalib_tests
 ```
 ## Library Usage Examples
 ```bash
+#inlcude "xhanalib.h"
+
 namespace xl = xhanalib;
 
 xl::log("The value is:", "1");
