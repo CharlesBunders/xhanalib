@@ -58,7 +58,7 @@ To run the tests:
 ```
 ## Library Usage Examples
 ```bash
-#inlcude "xhanalib.h"
+#include "xhanalib.h"
 
 namespace xl = xhanalib;
 
