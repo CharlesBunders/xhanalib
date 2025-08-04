@@ -7,7 +7,7 @@ project("xhanalib" VERSION 1.0.0
 
 include(GNUInstallDirs)
 
-# Create INTERFACE target for header-only library
+# Header-only interface library
 add_library(xhanalib INTERFACE)
 
 target_include_directories(xhanalib
@@ -18,8 +18,8 @@ target_include_directories(xhanalib
 
 target_compile_features(xhanalib INTERFACE cxx_std_17)
 
-# Installation rules
-install(DIRECTORY include/ DESTINATION include)
+# Install rules
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
 install(TARGETS xhanalib EXPORT xhanalibTargets)
 install(EXPORT xhanalibTargets
@@ -47,16 +47,14 @@ install(FILES
     DESTINATION lib/cmake/xhanalib
 )
 
+# Optional test control
+option(XHANALIB_BUILD_TESTS "Build xhanalib tests" ON)
+
 # Dependencies
 add_subdirectory(dependencies)
 
-# --------------------------------------------
-# TESTS (controlled by an independent option)
-# --------------------------------------------
-option(XHANALIB_BUILD_TESTS "Build xhanalib tests" ON)
-
 if(XHANALIB_BUILD_TESTS)
-    include(CTest)  # defines BUILD_TESTING
+    include(CTest)
     enable_testing()
     add_subdirectory(tests)
 endif()
