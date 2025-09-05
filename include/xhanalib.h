@@ -46,6 +46,7 @@ SOFTWARE.
 #include <array>
 #include <cmath>
 #include <type_traits>
+#include <memory>
 
 /**
 * Determination a platform of an operation system
